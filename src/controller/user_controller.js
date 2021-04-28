@@ -29,11 +29,21 @@ async function getUser(req, res, id) {
         console.log(error);
     }
 }
-async function CreateUser(req, res) {
+///
+async function createUser(req, res) {
     try {
 
+        const user = {
+            id: 30,
+            name: "User example",
+            email: "user@example.com",
+            avatar: "https://robohash.org/eosdictaoptio.png?size=50x50&set=set1"
+        }
+
+        const newUser = UserModel.createUser(user);
+
         res.writeHead(200, { 'Content-type': 'application/json' });
-        res.end(JSON.stringify(data));
+        res.end(JSON.stringify(newUser));
 
     } catch (error) {
         console.log(error);
@@ -43,5 +53,5 @@ async function CreateUser(req, res) {
 module.exports = {
     getUsers,
     getUser,
-    CreateUser
+    createUser
 }
